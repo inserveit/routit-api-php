@@ -24,7 +24,7 @@ use Inserve\RoutITAPI\RoutITAPIClient;
 require 'vendor/autoload.php';
 
 $apiClient = new RoutITAPIClient(
-    baseUri: 'https://example-uri.com'
+    baseUri: 'https://service.grexx.today'
 );
 
 $apiClient->configure(
@@ -33,6 +33,6 @@ $apiClient->configure(
     'interfaces/routit/id'
 );
 
-$result = $apiClient->getCustomerData(take: 5);
+$result = $apiClient->getCustomerData();
 
 ```
