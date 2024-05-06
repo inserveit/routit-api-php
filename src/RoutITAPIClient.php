@@ -59,38 +59,24 @@ class RoutITAPIClient
     }
 
     /**
-     * @param int|null $id
-     * @param int|null $take
-     * @param int|null $skip
+     * @param CustomerDataRequest|null $request
      *
      * @return CustomerDataResponse|null
      * @throws RoutITAPIException
      */
-    public function getCustomerData(?int $id = null, ?int $take = null, ?int $skip = null): ?CustomerDataResponse
+    public function getCustomerData(?CustomerDataRequest $request = null): ?CustomerDataResponse
     {
-        $request = new CustomerDataRequest();
-        $request
-            ->setId($id)
-            ->setTake($take)
-            ->setSkip($skip);
-
         /** @var CustomerDataResponse|null */
-        return $this->apiCall($request, CustomerDataResponse::class);
+        return $this->apiCall($request ?? new CustomerDataRequest(), CustomerDataResponse::class);
     }
 
     /**
      * @throws RoutITAPIException
      */
-    public function getOrderSummary(?int $id = null, ?int $take = null, ?int $skip = null): ?OrderSummaryResponse
+    public function getOrderSummary(?OrderSummaryRequest $request = null): ?OrderSummaryResponse
     {
-        $request = new OrderSummaryRequest();
-        $request
-            ->setId($id)
-            ->setTake($take)
-            ->setSkip($skip);
-
         /** @var OrderSummaryResponse|null */
-        return $this->apiCall($request, OrderSummaryResponse::class);
+        return $this->apiCall($request ?? new OrderSummaryRequest(), OrderSummaryResponse::class);
     }
 
     /**

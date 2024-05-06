@@ -18,6 +18,9 @@ class OrderSummary
     #[SerializedName('ProductId')]
     protected ?string $productId = null;
 
+    #[SerializedName('ProductName')]
+    protected ?string $productName = null;
+
     #[SerializedName('ProductGroup')]
     protected ?string $productGroup = null;
 
@@ -26,6 +29,9 @@ class OrderSummary
 
     #[SerializedName('Quantity')]
     protected ?int $quantity = null;
+
+    #[SerializedName('OrderState')]
+    protected ?string $orderState = null;
 
     /**
      * @return int|null
@@ -90,6 +96,26 @@ class OrderSummary
     /**
      * @return string|null
      */
+    public function getProductName(): ?string
+    {
+        return $this->productName;
+    }
+
+    /**
+     * @param string|null $productName
+     *
+     * @return $this
+     */
+    public function setProductName(?string $productName): self
+    {
+        $this->productName = $productName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getProductGroup(): ?string
     {
         return $this->productGroup;
@@ -147,6 +173,26 @@ class OrderSummary
     public function setQuantity(?int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOrderState(): ?string
+    {
+        return $this->orderState;
+    }
+
+    /**
+     * @param string|null $orderState
+     *
+     * @return $this
+     */
+    public function setOrderState(?string $orderState): self
+    {
+        $this->orderState = $orderState;
 
         return $this;
     }
