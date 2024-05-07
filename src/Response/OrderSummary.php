@@ -24,6 +24,9 @@ class OrderSummary
     #[SerializedName('ProductGroup')]
     protected ?string $productGroup = null;
 
+    #[SerializedName('Attribute')]
+    protected ?string $attribute = null;
+
     #[SerializedName('DateActive')]
     protected ?string $dateActive = null;
 
@@ -132,6 +135,26 @@ class OrderSummary
     public function setProductGroup(?string $productGroup): self
     {
         $this->productGroup = $productGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAttribute(): ?string
+    {
+        return $this->attribute;
+    }
+
+    /**
+     * @param string|null $attribute
+     *
+     * @return $this
+     */
+    public function setAttribute(?string $attribute): self
+    {
+        $this->attribute = $attribute;
 
         return $this;
     }
