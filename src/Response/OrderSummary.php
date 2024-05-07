@@ -33,6 +33,9 @@ class OrderSummary
     #[SerializedName('OrderState')]
     protected ?string $orderState = null;
 
+    #[SerializedName('ReferenceOrderId')]
+    protected ?int $referenceOrderId = null;
+
     /**
      * @return int|null
      */
@@ -193,6 +196,30 @@ class OrderSummary
     public function setOrderState(?string $orderState): self
     {
         $this->orderState = $orderState;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getReferenceOrderId(): ?int
+    {
+        return $this->referenceOrderId;
+    }
+
+    /**
+     * @param mixed $referenceOrderId
+     *
+     * @return $this
+     */
+    public function setReferenceOrderId(mixed $referenceOrderId): self
+    {
+        if (! is_int($referenceOrderId)) {
+            $referenceOrderId = null;
+        }
+
+        $this->referenceOrderId = $referenceOrderId;
 
         return $this;
     }
