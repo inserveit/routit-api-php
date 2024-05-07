@@ -17,6 +17,9 @@ class OrderSummaryRequest extends AbstractRoutITPaginatedRequest
     #[SerializedName('ProductGroup')]
     protected ?string $productGroup = null;
 
+    #[SerializedName('DateModifiedFrom')]
+    protected ?string $dateModifiedFrom = null;
+
     /**
      * @return int|null
      */
@@ -53,6 +56,26 @@ class OrderSummaryRequest extends AbstractRoutITPaginatedRequest
     public function setProductGroup(?string $productGroup): self
     {
         $this->productGroup = $productGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDateModifiedFrom(): ?string
+    {
+        return $this->dateModifiedFrom;
+    }
+
+    /**
+     * @param string|null $dateModifiedFrom
+     *
+     * @return $this
+     */
+    public function setDateModifiedFrom(?string $dateModifiedFrom): self
+    {
+        $this->dateModifiedFrom = $dateModifiedFrom;
 
         return $this;
     }
