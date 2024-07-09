@@ -12,6 +12,7 @@ use Inserve\RoutITAPI\Request\RoutITRequestInterface;
 use Inserve\RoutITAPI\Response\ErrorResponse;
 use Psr\Log\LoggerAwareTrait;
 use SensitiveParameter;
+use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -141,7 +142,9 @@ class APIClient
         try {
             return $this->serializer->deserialize($response, $class, XmlEncoder::FORMAT);
         } catch (Exception $exception) {
-            $this->logError(sprintf('(%s): %s', __FUNCTION__, $exception->getMessage()));
+            if (!$exception instanceof UnexpectedTypeException) {
+                $this->logError(sprintf('(%s): %s', __FUNCTION__, $exception->getMessage()));
+            }
 
             return null;
         }
