@@ -28,7 +28,7 @@ use Symfony\Component\Serializer\Serializer;
 /**
  *
  */
-class APIClient
+final class APIClient
 {
     use LoggerAwareTrait;
 

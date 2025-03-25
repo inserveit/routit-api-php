@@ -7,7 +7,7 @@ use Exception;
 /**
  *
  */
-class RoutITAPIException extends Exception
+final class RoutITAPIException extends Exception
 {
 
 }

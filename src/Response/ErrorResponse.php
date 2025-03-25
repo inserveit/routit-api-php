@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 /**
  *
  */
-class ErrorResponse
+final class ErrorResponse
 {
     #[SerializedName('ErrorCode')]
     protected ?int $errorCode = null;

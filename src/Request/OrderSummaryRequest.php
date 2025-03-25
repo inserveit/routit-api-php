@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 /**
  *
  */
-class OrderSummaryRequest extends AbstractRoutITPaginatedRequest
+final class OrderSummaryRequest extends AbstractRoutITPaginatedRequest
 {
     protected string $rootNode = 'OrderSummaryRequest_V1';
 

@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 /**
  *
  */
-class CustomerData
+final class CustomerData
 {
     #[SerializedName('Id')]
     protected ?int $id = null;

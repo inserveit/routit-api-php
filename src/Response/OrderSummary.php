@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 /**
  *
  */
-class OrderSummary
+final class OrderSummary
 {
     #[SerializedName('OrderId')]
     protected ?int $orderId = null;

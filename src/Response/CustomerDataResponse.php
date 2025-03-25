@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedPath;
 /**
  *
  */
-class CustomerDataResponse extends AbstractPagedResultResponse
+final class CustomerDataResponse extends AbstractPagedResultResponse
 {
     /** @var CustomerData[]|null */
     #[SerializedPath('[PagedResult][Results][CustomerData_V4]')]

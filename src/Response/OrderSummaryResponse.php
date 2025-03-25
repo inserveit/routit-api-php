@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedPath;
 /**
  *
  */
-class OrderSummaryResponse extends AbstractPagedResultResponse
+final class OrderSummaryResponse extends AbstractPagedResultResponse
 {
     /** @var OrderSummary[]|null */
     #[SerializedPath('[PagedResult][Results][OrderSummary_V1]')]

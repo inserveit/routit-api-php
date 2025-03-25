@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 /**
  *
  */
-class ProductPriceDetails
+final class ProductPriceDetails
 {
     #[SerializedName('ProductCode')]
     protected ?string $productCode = null;
