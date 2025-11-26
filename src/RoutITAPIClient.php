@@ -9,9 +9,11 @@ use Inserve\RoutITAPI\Request\CustomerDataRequest;
 use Inserve\RoutITAPI\Request\OrderSummaryRequest;
 use Inserve\RoutITAPI\Request\ProductPriceDetailsRequest;
 use Inserve\RoutITAPI\Request\RoutITRequestInterface;
+use Inserve\RoutITAPI\Request\ZipCodeCheckRequest;
 use Inserve\RoutITAPI\Response\CustomerDataResponse;
 use Inserve\RoutITAPI\Response\OrderSummaryResponse;
 use Inserve\RoutITAPI\Response\ProductPriceDetailsResponse;
+use Inserve\RoutITAPI\Response\ZipCodeCheckResponse;
 use Psr\Log\LoggerInterface;
 use SensitiveParameter;
 
@@ -89,6 +91,19 @@ final class RoutITAPIClient
         /** @var ProductPriceDetailsResponse|null */
         return $this->apiCall(new ProductPriceDetailsRequest(), ProductPriceDetailsResponse::class);
     }
+
+    /**
+     * @param ZipCodeCheckRequest|null $request
+     *
+     * @return ZipCodeCheckResponse|null
+     * @throws RoutITAPIException
+     */
+    public function zipCodeCheck(?ZipCodeCheckRequest $request = null): ?ZipCodeCheckResponse
+    {
+        /** @var ZipCodeCheckResponse|null */
+        return $this->apiCall($request ?? new ZipCodeCheckRequest(), ZipCodeCheckResponse::class);
+    }
+
     /**
      * @param RoutITRequestInterface $request
      * @param string                 $responseClass
