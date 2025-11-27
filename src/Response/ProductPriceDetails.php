@@ -2,6 +2,8 @@
 
 namespace Inserve\RoutITAPI\Response;
 
+use Inserve\RoutITAPI\Response\Enum\ProductGroup;
+use Inserve\RoutITAPI\Response\Enum\SlaLevel;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
 /**
@@ -15,26 +17,35 @@ final class ProductPriceDetails
     #[SerializedName('ProductName')]
     protected ?string $productName = null;
 
-    #[SerializedName('ContractDuration')]
-    protected ?int $contractDuration = null;
+    #[SerializedName('GrossPrice')]
+    protected int|float|null $grossPrice = null;
 
-    #[SerializedName('GrossPricePartner')]
-    protected int|float|null $grossPricePartner = null;
+    #[SerializedName('NettPrice')]
+    protected int|float|null $nettPrice = null;
+
+    #[SerializedName('Discount')]
+    protected int|float|null $discount = null;
 
     #[SerializedName('SetupCosts')]
     protected int|float|null $setupCosts = null;
+    
+    #[SerializedName('CancelCosts')]
+    protected int|float|null $cancelCosts = null;
 
-    #[SerializedName('DiscountPercentage')]
-    protected int|float|null $discountPercentage = null;
+    #[SerializedName('SlaLevel')]
+    protected ?string $slaLevel = null;
+
+    #[SerializedName('ContractDuration')]
+    protected ?int $contractDuration = null;
+
+    #[SerializedName('ProductType')]
+    protected ?string $productType = null;
 
     #[SerializedName('CommercialProductTypeName')]
     protected ?string $commercialProductTypeName = null;
 
     #[SerializedName('ProductGroup')]
     protected ?string $productGroup = null;
-
-    #[SerializedName('CancelCosts')]
-    protected int|float|null $cancelCosts = null;
 
     /**
      * @return string|null
@@ -99,23 +110,71 @@ final class ProductPriceDetails
     /**
      * @return float|int|null
      */
-    public function getGrossPricePartner(): float|int|null
+    public function getGrossPrice(): float|int|null
     {
-        return $this->grossPricePartner;
+        return $this->grossPrice;
     }
 
     /**
-     * @param mixed $grossPricePartner
+     * @param mixed $grossPrice
      *
      * @return $this
      */
-    public function setGrossPricePartner(mixed $grossPricePartner): self
+    public function setGrossPrice(mixed $grossPrice): self
     {
-        if (! is_numeric($grossPricePartner)) {
-            $grossPricePartner = null;
+        if (! is_numeric($grossPrice)) {
+            $grossPrice = null;
         }
 
-        $this->grossPricePartner = (float) $grossPricePartner;
+        $this->grossPrice = (float) $grossPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return float|int|null
+     */
+    public function getNettPrice(): float|int|null
+    {
+        return $this->nettPrice;
+    }
+
+    /**
+     * @param mixed $nettPrice
+     *
+     * @return $this
+     */
+    public function setNettPrice(mixed $nettPrice): self
+    {
+        if (! is_numeric($nettPrice)) {
+            $nettPrice = null;
+        }
+
+        $this->nettPrice = (float) $nettPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return float|int|null
+     */
+    public function getDiscount(): float|int|null
+    {
+        return $this->discount;
+    }
+
+    /**
+     * @param mixed $discount
+     *
+     * @return $this
+     */
+    public function setDiscount(mixed $discount): self
+    {
+        if (! is_numeric($discount)) {
+            $discount = null;
+        }
+
+        $this->discount = (float) $discount;
 
         return $this;
     }
@@ -140,25 +199,6 @@ final class ProductPriceDetails
         return $this;
     }
 
-    /**
-     * @return float|int|null
-     */
-    public function getDiscountPercentage(): float|int|null
-    {
-        return $this->discountPercentage;
-    }
-
-    /**
-     * @param float|int|null $discountPercentage
-     *
-     * @return $this
-     */
-    public function setDiscountPercentage(float|int|null $discountPercentage): self
-    {
-        $this->discountPercentage = $discountPercentage;
-
-        return $this;
-    }
 
     /**
      * @return string|null
@@ -183,19 +223,51 @@ final class ProductPriceDetails
     /**
      * @return string|null
      */
+    public function getProductType(): ?string
+    {
+        return $this->productType;
+    }
+
+    /**
+     * @param string|null $productType
+     *
+     * @return $this
+     */
+    public function setProductType(?string $productType): self
+    {
+        $this->productType = $productType;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getProductGroup(): ?string
     {
         return $this->productGroup;
     }
 
     /**
-     * @param string|null $productGroup
+     * @return ProductGroup|null
+     */
+    public function getProductGroupEnum(): ?ProductGroup
+    {
+        return ProductGroup::fromNullable($this->productGroup);
+    }
+
+    /**
+     * @param ProductGroup|string|null $productGroup
      *
      * @return $this
      */
-    public function setProductGroup(?string $productGroup): self
+    public function setProductGroup(ProductGroup|string|null $productGroup): self
     {
-        $this->productGroup = $productGroup;
+        if ($productGroup instanceof ProductGroup) {
+            $this->productGroup = $productGroup->value;
+        } else {
+            $this->productGroup = $productGroup;
+        }
 
         return $this;
     }
@@ -218,5 +290,37 @@ final class ProductPriceDetails
         $this->cancelCosts = $cancelCosts;
 
         return $this;
+    }
+
+    /**
+     * @param SlaLevel|string|null $slaLevel
+     *
+     * @return $this
+     */
+    public function setSlaLevel(SlaLevel|string|null $slaLevel): self
+    {
+        if ($slaLevel instanceof SlaLevel) {
+            $this->slaLevel = $slaLevel->value;
+        } else {
+            $this->slaLevel = $slaLevel;
+        }
+
+        return $this;
+     }
+ 
+     /**
+     * @return string|null
+     */
+    public function getSlaLevel(): ?string
+    {
+        return $this->slaLevel;
+    }
+
+    /**
+     * @return SlaLevel|null
+     */
+    public function getSlaLevelEnum(): ?SlaLevel
+    {
+        return SlaLevel::fromNullable($this->slaLevel);
     }
 }

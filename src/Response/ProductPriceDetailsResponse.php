@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Attribute\SerializedPath;
 final class ProductPriceDetailsResponse
 {
     /** @var ProductPriceDetails[]|null */
-    #[SerializedPath('[ProductsPriceDetails][ProductPriceDetails_V1]')]
+    #[SerializedPath('[ProductsPriceDetails][ProductPriceDetails_V2]')]
     protected ?array $productPriceDetails = null;
 
     /**
