@@ -18,7 +18,7 @@ use SensitiveParameter;
 /**
  *
  */
-final class RoutITAPIClient
+class RoutITAPIClient
 {
     protected APIClient $apiClient;
 
